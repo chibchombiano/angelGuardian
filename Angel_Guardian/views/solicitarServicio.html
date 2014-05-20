@@ -1,0 +1,56 @@
+<div data-role="view" id="share" data-layout="default" class="signup-view" data-transition="overlay:down" class="add-activity-view"
+    data-init="app.AddServicio.init" data-show="app.AddServicio.show" data-model="app.AddServicio">
+    <div data-role="header">
+        <div data-role="navbar">
+            Nuevo servicio
+            <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Cancelar</a>            
+        </div>
+    </div>
+    <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
+        <div class="user-avatar">
+            <img data-bind="attr:{src: me.get('data').PictureUrl}" alt="styles/images/avatar.png" />
+        </div>
+        <h2 class="person-name" data-bind="text: me.get('data').DisplayName">Me</h2>
+        
+      
+        
+    </div>   
+    <form id="servicio">
+            
+        <ul id="servicio-datos-vehiculo" data-role="listview" data-style="inset">            
+            <li>
+                <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required/>
+            </li>
+            
+            <li>
+                <input type="text" id="servicioColor" data-bind="value: Color" placeholder="Color" required/>
+            </li>
+            
+            <li>
+                <input type="text" id="servicioPlaca" data-bind="value: Placa" placeholder="Placa" required/>
+            </li>
+            
+        </ul>        
+            <ul id="servicio-datos-destino" data-role="listview" data-style="inset">            
+            <li>
+                <input type="text" id="servicioDireccionPartida" data-bind="value: Direccion_Partida" placeholder="Direccion de partida" required/>
+            </li>
+                
+            <li>
+                <input type="text" id="servicioDireccionLlegada" data-bind="value: Direccion_Llegada" placeholder="Direccion de llegada" required/>
+            </li>
+            
+            <li>
+                <input type="text" id="servicioNumeroParadas" data-bind="value: Numero_Paradas" placeholder="Numero de paradas" required/>
+            </li>
+            
+            <li>
+                <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono_Confirmacion" placeholder="Telefono confirmacion" required/>
+            </li>           
+        </ul>        
+    	</form>
+    
+     <div id="servicioSolicitar" class="signup-btn-wrp disabled">
+         <a class="btn btn-signup" data-role="button" data-bind="click: solicitarServicio">Solicitar</a>
+     </div>
+</div>
