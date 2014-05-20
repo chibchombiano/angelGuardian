@@ -18,6 +18,8 @@ app.Signup = (function () {
         var signup = function () {
 
             dataSource.Gender = parseInt(dataSource.Gender);
+            dataSource.Username = dataSource.Email;
+            
             var birthDate = new Date(dataSource.BirthDate);
 
             if (birthDate.toJSON() === null) {
@@ -68,7 +70,7 @@ app.Signup = (function () {
                 Gender: '0',
                 About: '',
                 Friends: [],
-                BirthDate: new Date()
+                BirthDate: new Date()              
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };
