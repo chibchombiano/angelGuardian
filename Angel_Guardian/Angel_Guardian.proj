@@ -17,6 +17,12 @@
     <Description>Angel Guardian</Description>
     <Author>Hefesoft</Author>
     <DisplayName>Angel Guardian</DisplayName>
+    <iOSBackgroundMode>location</iOSBackgroundMode>
+    <WP8TileTitle>Angel Guardian</WP8TileTitle>
+    <WP8ProductID>{38711688-e9b1-40b5-8517-2f2fc62646ed}</WP8ProductID>
+    <WP8PublisherID>{8c1efc1a-0014-4a06-b951-c79752e92813}</WP8PublisherID>
+    <WP8Publisher>Hefesoft</WP8Publisher>
+    <WP8Capabilities>ID_CAP_LOCATION</WP8Capabilities>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>

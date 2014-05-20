@@ -32,9 +32,9 @@
             
         </ul>        
             <ul id="servicio-datos-destino" data-role="listview" data-style="inset">            
-            <li>
-                <input type="text" id="servicioDireccionPartida" data-bind="value: Direccion_Partida" placeholder="Direccion de partida" required/>
-            </li>
+            
+            <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion_Partida" placeholder="Direccion de partida" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                
+             
                 
             <li>
                 <input type="text" id="servicioDireccionLlegada" data-bind="value: Direccion_Llegada" placeholder="Direccion de llegada" required/>
@@ -53,4 +53,17 @@
      <div id="servicioSolicitar" class="signup-btn-wrp disabled">
          <a class="btn btn-signup" data-role="button" data-bind="click: solicitarServicio">Solicitar</a>
      </div>
+    
+    <div data-role="modalview" id="modalDireccionPartida" style="width: 200px; height: 200px">
+    	<a data-role="button"  data-click="closeModal">Cerrar</a>
+	</div>
+    
+    
+<div data-role="view">  
+  <ul id="actionsheet" data-role="actionsheet" data-cancel="Cerrar">
+    <li><a id='buscarGps'>Buscar por gps</a></li> 
+  </ul>
 </div>
+    
+</div>
+

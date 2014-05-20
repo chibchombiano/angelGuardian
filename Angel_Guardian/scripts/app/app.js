@@ -154,7 +154,23 @@ var app = (function (win) {
     var getYear = (function () {
         var currentTime = new Date();
         return currentTime.getFullYear();
-    }());
+    }());  
+   
+    (function dataSourceUpdate(){
+        var dataSourceExtensions = {
+            updateField: function(e) {
+                var ds = this;
+                $.each(ds._data, function(idx, record) {
+                    if (record[e.keyField] == e.keyValue) {
+                        ds._data[idx][e.updateField] = e.updateValue;
+                        ds.read(ds._data);
+                        return false;
+                    }
+                });
+            }
+        };
+    })();
+    
 
     return {
         showAlert: showAlert,
@@ -164,7 +180,7 @@ var app = (function (win) {
         mobileApp: mobileApp,
         helper: AppHelper,
         everlive: el,
-        getYear: getYear
+        getYear: getYear       
     };
 
 }(window));
