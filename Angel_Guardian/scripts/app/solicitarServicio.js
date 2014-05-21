@@ -89,6 +89,7 @@ app.AddServicio = (function () {
                 },
                 function(error){
             		deferred.reject("Geocoding failed: " + status);
+                    app.mobileApp.hideLoading();
                 }
                 );
             
@@ -104,16 +105,21 @@ app.AddServicio = (function () {
            if (geocoder) {
               geocoder.geocode({ 'latLng': latLng }, function (results, status) {
                  if (status == google.maps.GeocoderStatus.OK) {
-                    var direccion = results[0].formatted_address;
-                     dataSource.Direccion_Partida = direccion;
-                     app.showConfirm('direccion encontrada ' + direccion, 'Direccion Gps',resultDialog)                     
-                     dataSource.set('Direccion_Partida', direccion);
-                     kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
-                     deferred.resolve(direccion);
+                     try
+                     {
+                        var direccion = results[0].formatted_address;
+                         dataSource.Direccion_Partida = direccion;
+                         app.showConfirm('direccion encontrada ' + direccion, 'Direccion Gps',resultDialog)                     
+                         dataSource.set('Direccion_Partida', direccion);
+                         kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
+                         deferred.resolve(direccion);
+                     }
+                     catch (error){}
                  }
                  else {
                     console.log("Geocoding failed: " + status);
-                     deferred.reject("Geocoding failed: " + status);
+                    deferred.reject("Geocoding failed: " + status);
+                    app.mobileApp.hideLoading();
                  }
               });
            }
