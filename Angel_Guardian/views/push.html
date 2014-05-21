@@ -1,0 +1,24 @@
+        <!--MAIN VIEW -->
+        <div id="push" 
+             data-role="view" 
+             data-init="app.Main.viewModels.main.init" data-show="app.Main.viewModels.main.show"
+             data-model="app.Main.viewModels.main"
+             >
+            
+            <h1><b>Telerik BackEnd Services</b> sample application</h1>
+            <p id="messageParagraph">
+                Welcome to the Telerik BackEnd Services push notifications sample hybrid app.<br />
+                <br />
+                Tap on the button below to enable push notifications on the device.
+            </p>
+            <p><a id="tokenLink" style="display: none;">send token</a></p>
+            <div>
+                <a id="initializeButton" data-role="button" data-bind="events: { click: enablePushNotifications }" class="btn-big">Enable Notifications</a>
+                <a id="registerButton" style="display: none;" data-role="button" data-bind="events: { click: registerInEverlive }" class="btn-big">Register</a>
+                <a id="updateRegistrationButton" style="display: none;" data-role="button" data-bind="events: { click: updateRegistration }" class="btn-big">Update Registration</a>
+                <a id="unregisterButton" style="display: none;" data-role="button" data-bind="events: { click: disablePushNotifications }" class="btn-big">Disable Notifications</a>
+            </div>
+            <div data-role="footer">
+                <p>Powered by Telerik AppBuilder.</p>
+            </div>
+        </div>
