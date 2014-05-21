@@ -128,6 +128,7 @@ app.AddServicio = (function () {
                                 
         var solicitarServicio = function () {
             
+            	app.mobileApp.showLoading();
                 // Adding new comment to Comments model
                 var servicios = app.Servicios.servicios;
                 var servicio = servicios.add();                
@@ -142,6 +143,7 @@ app.AddServicio = (function () {
                 servicio.UserId = app.Users.currentUser.get('data').Id;
                 
                 servicios.one('sync', function () {
+                    app.mobileApp.hideLoading();
                     app.mobileApp.navigate('views/servicioExitoso.html');
                 });
                 
