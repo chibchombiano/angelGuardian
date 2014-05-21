@@ -42,7 +42,7 @@ app.AddServicio = (function () {
                 onErrorShowMap
                 );
             
-            $buscarGps.click(geoDecode);          
+            $buscarGps.click(getAddress);  
         };
         
         function inicializarDataSource(){
@@ -69,8 +69,35 @@ app.AddServicio = (function () {
             inicializarDataSource();
         };
         
-        var geoDecode =  function (){
+        var getAddress = function(){
+             app.mobileApp.showLoading();
+        
+            getPosition().done(function(){            
+                geoDecode().done(function(){
+            		 app.mobileApp.hideLoading();    
+            	});                
+            });
+        }
+        
+        var getPosition = function(){
+            var deferred = Q.defer();
             
+            navigator.geolocation.getCurrentPosition(
+                function(data){
+                    position  = { latitude: data.coords.latitude, longitude : data.coords.longitude};
+                    deferred.resolve(position);
+                },
+                function(error){
+            		deferred.reject("Geocoding failed: " + status);
+                }
+                );
+            
+            return deferred.promise;
+        }
+        
+        var geoDecode =  function (){
+           
+           var deferred = Q.defer();
            var geocoder = new google.maps.Geocoder();
    		   var latLng = new google.maps.LatLng(position.latitude, position.longitude);
 
@@ -82,12 +109,16 @@ app.AddServicio = (function () {
                      app.showConfirm('direccion encontrada ' + direccion, 'Direccion Gps',resultDialog)                     
                      dataSource.set('Direccion_Partida', direccion);
                      kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
+                     deferred.resolve(direccion);
                  }
                  else {
                     console.log("Geocoding failed: " + status);
+                     deferred.reject("Geocoding failed: " + status);
                  }
               });
            }
+            
+            return deferred.promise;
     	};
         
         function resultDialog(result){
