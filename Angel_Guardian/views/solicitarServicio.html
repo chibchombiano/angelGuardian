@@ -17,37 +17,43 @@
     </div>   
     <form id="servicio">
             
-        <ul id="servicio-datos-vehiculo" data-role="listview" data-style="inset">            
-            <li>
-                <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required/>
-            </li>
+        <ul id="servicio-datos-vehiculo" data-role="listview" data-style="inset"  data-type="group">            
+             <li>
+            	Datos Vehiculo
+                <ul>
+                    <li>
+                        <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required/>
+                    </li>
+                    
+                    <li>
+                        <input type="text" id="servicioColor" data-bind="value: Color" placeholder="Color" required/>
+                    </li>
+                    
+                    <li>
+                        <input type="text" id="servicioPlaca" data-bind="value: Placa" placeholder="Placa" required/>
+                    </li>
+                </ul>
+        	</li>  
             
             <li>
-                <input type="text" id="servicioColor" data-bind="value: Color" placeholder="Color" required/>
-            </li>
-            
-            <li>
-                <input type="text" id="servicioPlaca" data-bind="value: Placa" placeholder="Placa" required/>
-            </li>
-            
-        </ul>        
-            <ul id="servicio-datos-destino" data-role="listview" data-style="inset">            
-            
-            <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion_Partida" placeholder="Direccion de partida" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                
-             
+            Datos de servicio
+                <ul>
+                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion_Partida" placeholder="Direccion de partida" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
                 
-            <li>
-                <input type="text" id="servicioDireccionLlegada" data-bind="value: Direccion_Llegada" placeholder="Direccion de llegada" required/>
-            </li>
-            
-            <li>
-                <input type="text" id="servicioNumeroParadas" data-bind="value: Numero_Paradas" placeholder="Numero de paradas" required/>
-            </li>
-            
-            <li>
-                <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono_Confirmacion" placeholder="Telefono confirmacion" required/>
-            </li>           
-        </ul>        
+                    <li>
+                        <input type="text" id="servicioDireccionLlegada" data-bind="value: Direccion_Llegada" placeholder="Direccion de llegada" required/>
+                    </li>
+                    
+                    <li>
+                        <input type="number" id="servicioNumeroParadas" data-bind="value: Numero_Paradas" placeholder="# Paradas" min="1" max="20" required/>
+                    </li>
+                    
+                    <li>
+                        <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono_Confirmacion" placeholder="Telefono confirmacion" required/>
+                    </li>           
+                </ul>
+            </li>            
+        	</ul>        
     	</form>
     
      <div id="servicioSolicitar" class="signup-btn-wrp disabled">

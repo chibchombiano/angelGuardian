@@ -1,0 +1,19 @@
+<div data-role="view" id="servicioExitoso" data-layout="default" data-transition="overlay:down" class="add-comment-view"
+    data-model="app.AddComment">
+    <div data-role="header">
+        <div data-role="navbar">
+            Solicitud procesada            
+        </div>
+    </div>
+    <div class="share-form-wrp" data-role="listview" data-style="inset">
+        <div class="user-avatar">
+            <img data-bind="attr:{src: me.get('data').PictureUrl}" alt="styles/images/avatar.png" />
+        </div>
+        <h2 class="person-name" data-bind="text: me.get('data').DisplayName">Me</h2>
+        <div class="user-share">
+            <textarea>
+            	El servicio a sido solicitado con exito en breve sera contactado por un asesor gracias.
+            </textarea>
+        </div>
+    </div>
+</div>

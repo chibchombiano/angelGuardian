@@ -97,22 +97,24 @@ app.AddServicio = (function () {
                                 
         var solicitarServicio = function () {
             
-            // Validating of the required fields
-            if (validator.validate()) {
+                // Adding new comment to Comments model
+                var servicios = app.Servicios.servicios;
+                var servicio = servicios.add();                
                 
-                // Adding new activity to Activities model
-                /*var servicios = app.Servicios.servicios;
-                var servicio = servicios.add();
+                servicio.Color = dataSource.Color;
+                servicio.Direccion_Llegada =  dataSource.Direccion_Llegada;
+                servicio.Direccion_Partida = dataSource.Direccion_Partida;
+                servicio.Marca = dataSource.Marca;
+                servicio.Numero_Paradas = dataSource.Numero_Paradas;
+                servicio.Placa = dataSource.Placa;
+                servicio.Telefono_Confirmacion = dataSource.Telefono_Confirmacion;
+                servicio.UserId = app.Users.currentUser.get('data').Id;
                 
-                activity.Text = $newStatus.val();
-                activity.UserId = app.Users.currentUser.get('data').Id;
-                
-                activities.one('sync', function () {
-                    app.mobileApp.navigate('#:back');
+                servicios.one('sync', function () {
+                    app.mobileApp.navigate('views/servicioExitoso.html');
                 });
                 
-                servicios.sync();*/
-            }
+                servicios.sync();
         };
         
         return {
