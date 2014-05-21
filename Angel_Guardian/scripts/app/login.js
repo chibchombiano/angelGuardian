@@ -27,6 +27,28 @@ app.Login = (function () {
         var show = function () {
             $loginUsername.val('');
             $loginPassword.val('');
+            
+            var username = localStorage.getItem("username");
+            var password = localStorage.getItem("password");
+            
+            if(username !== null && password != null){
+			// Authenticate using the username and password
+            app.everlive.Users.login(username, password)
+            .then(function () {
+                return app.Users.load();
+            })
+            .then(function () {
+                localStorage.setItem("username",username);
+                localStorage.setItem("password",password);
+                app.mobileApp.navigate('views/solicitarServicio.html');
+            })
+            .then(null,
+                  function (err) {
+                      app.showError(err.message);
+                  }
+            );
+            }
+            
         };
 
         // Authenticate to use Backend Services as a particular user
@@ -41,6 +63,8 @@ app.Login = (function () {
                 return app.Users.load();
             })
             .then(function () {
+                localStorage.setItem("username",username);
+                localStorage.setItem("password",password);
                 app.mobileApp.navigate('views/solicitarServicio.html');
             })
             .then(null,

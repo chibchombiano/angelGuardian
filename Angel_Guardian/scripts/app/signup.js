@@ -33,6 +33,10 @@ app.Signup = (function () {
                 dataSource.Password,
                 dataSource)
             .then(function () {
+                
+                localStorage.setItem("username", dataSource.Username);
+                localStorage.setItem("password", dataSource.Password);
+                
                 app.showAlert("Registration successful");
                 app.mobileApp.navigate('#welcome');
             },
