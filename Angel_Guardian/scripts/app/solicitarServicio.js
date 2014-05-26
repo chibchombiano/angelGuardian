@@ -14,7 +14,7 @@ app.AddServicio = (function () {
         var $signupBtnWrp;
         var $buscarGps;  
         var datosUsuario;
-       
+       	var serviceUrl = 'http://angelguardian.azurewebsites.net/api/solicitud'
         
         var init = function () {
             
@@ -38,7 +38,8 @@ app.AddServicio = (function () {
         
         var show = function () {
             
-             app.mobileApp.showLoading();
+            app.mobileApp.showLoading();
+            $buscarGps.click(getAddress);  
             
             app.everlive.Users.currentUser().then(function(data){
                 	app.mobileApp.hideLoading();
@@ -49,7 +50,7 @@ app.AddServicio = (function () {
                         onErrorShowMap
                 	);
             
-            		$buscarGps.click(getAddress);  
+            		
                 
             	}
             );
@@ -130,9 +131,9 @@ app.AddServicio = (function () {
                      try
                      {
                         var direccion = results[0].formatted_address;
-                         dataSource.Direccion_Partida = direccion;
+                         dataSource.Direccion = direccion;
                          app.showConfirm('direccion encontrada ' + direccion, 'Direccion Gps',resultDialog)                     
-                         dataSource.set('Direccion_Partida', direccion);
+                         dataSource.set('Direccion', direccion);
                          kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
                          deferred.resolve(direccion);
                      }
@@ -156,6 +157,25 @@ app.AddServicio = (function () {
         function S4() {
             return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
         }
+        
+        function sendRequest(datos) { 
+			app.mobileApp.showLoading();
+            
+            $.ajax({
+                url : serviceUrl,
+                type: "POST",
+                data : datos,
+                success: function(data, textStatus, jqXHR)
+                {
+                    app.mobileApp.hideLoading();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+             		app.mobileApp.hideLoading();
+                }
+            });
+    	}
+        
          
       
                                 
@@ -187,14 +207,24 @@ app.AddServicio = (function () {
             	servicio.RecibeNotificaciones = '';
                 servicio.Telefono = dataSource.Telefono;
             	servicio.TieneCarro = dataSource.TieneCarro;
-                //servicio.UserId = app.Users.currentUser.get('data').Id;
+               
                 
-                servicios.one('sync', function () {
+                /*servicios.one('sync', function () {
                     app.mobileApp.hideLoading();
                     app.mobileApp.navigate('views/servicioExitoso.html');
-                });
+                });*/
+            
+            var data = {
+                Id: servicio.Id, Apellidos:  servicio.Apellidos, Aseguradora : servicio.Aseguradora, Cedula: servicio.Cedula,
+                Ciudad: servicio.Ciudad, Color: servicio.Color, Direccion: servicio.Direccion, DireccionDestino: servicio.DireccionDestino,
+                Email: servicio.Email, Estado: servicio.Estado, FechaServicio: servicio.FechaServicio, IdUsuario : servicio.IdUsuario,
+                Marca : servicio.Marca, NoParadas : servicio.NoParadas, Nombre : servicio.Nombre, Placa: servicio.Placa, RecibeNotificaciones : servicio.RecibeNotificaciones,
+                Telefono: servicio.Telefono, TieneCarro : servicio.TieneCarro
+            }
+            
+            	sendRequest(data);
                 
-                servicios.sync();
+                //servicios.sync();
         };
         
         return {
