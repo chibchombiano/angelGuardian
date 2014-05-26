@@ -74,7 +74,12 @@ app.Signup = (function () {
                 Gender: '0',
                 About: '',
                 Friends: [],
-                BirthDate: new Date()              
+                BirthDate: new Date(),
+                Nombre : '',
+                Apellidos : '',
+                Cedula : '',
+                TieneCarro : '',
+                
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };

@@ -12,7 +12,8 @@ app.AddServicio = (function () {
         var $signUpForm;
         var $formFields;
         var $signupBtnWrp;
-        var $buscarGps;      
+        var $buscarGps;  
+        var datosUsuario;
        
         
         var init = function () {
@@ -37,23 +38,44 @@ app.AddServicio = (function () {
         
         var show = function () {
             
-            navigator.geolocation.getCurrentPosition(
-                onSuccessShowMap,
-                onErrorShowMap
-                );
+             app.mobileApp.showLoading();
             
-            $buscarGps.click(getAddress);  
+            app.everlive.Users.currentUser().then(function(data){
+                	app.mobileApp.hideLoading();
+                	datosUsuario = data.result;
+                	
+                        navigator.geolocation.getCurrentPosition(
+                        onSuccessShowMap,
+                        onErrorShowMap
+                	);
+            
+            		$buscarGps.click(getAddress);  
+                
+            	}
+            );
         };
         
         function inicializarDataSource(){
             dataSource = kendo.observable({
+                /*Id: datosUsuario.Id,*/
+                IdUsuario: datosUsuario.Id,
+                Email: datosUsuario.Email,
+                Telefono: '',
+                Direccion: '',
+                DireccionDestino: '',
+                NoParadas: '',
+                FechaServicio:  new Date(),
+                Nombre: datosUsuario.Nombre,
+                Apellidos: datosUsuario.Apellidos,
+                Cedula: datosUsuario.Cedula,
+                Ciudad:'',
+                TieneCarro: datosUsuario.TieneCarro,
                 Marca: '',
                 Color: '',
                 Placa: '',
-                Direccion_Partida: '',
-                Direccion_Llegada: '',
-                Numero_Paradas: '',
-                Telefono_Confirmacion: ''          
+                Aseguradora: '',
+                Estado: 0,
+                RecibeNotificaciones: 0
             });
             kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
             
@@ -129,7 +151,12 @@ app.AddServicio = (function () {
         
         function resultDialog(result){
             
-        }                          
+        }   
+        
+        function S4() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
+        }
+         
       
                                 
         var solicitarServicio = function () {
@@ -139,14 +166,28 @@ app.AddServicio = (function () {
                 var servicios = app.Servicios.servicios;
                 var servicio = servicios.add();                
                 
+            	servicio.Id = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+            	//servicio.Id = 2;
+            	servicio.Apellidos = dataSource.Apellidos;
+            	servicio.Aseguradora = dataSource.Aseguradora;
+            	servicio.Cedula = dataSource.Cedula;
+            	servicio.Ciudad = dataSource.Ciudad;
                 servicio.Color = dataSource.Color;
-                servicio.Direccion_Llegada =  dataSource.Direccion_Llegada;
-                servicio.Direccion_Partida = dataSource.Direccion_Partida;
-                servicio.Marca = dataSource.Marca;
-                servicio.Numero_Paradas = dataSource.Numero_Paradas;
+            
+                servicio.Direccion =  dataSource.Direccion;
+                servicio.DireccionDestino = dataSource.DireccionDestino;
+                servicio.Email = dataSource.Email;
+            	servicio.Estado = dataSource.Estado;
+            	servicio.FechaServicio = dataSource.FechaServicio;
+            	servicio.IdUsuario = dataSource.IdUsuario;
+            	servicio.Marca = dataSource.Marca;
+                servicio.NoParadas = dataSource.NoParadas;
+            	servicio.Nombre = dataSource.Nombre;            	
                 servicio.Placa = dataSource.Placa;
-                servicio.Telefono_Confirmacion = dataSource.Telefono_Confirmacion;
-                servicio.UserId = app.Users.currentUser.get('data').Id;
+            	servicio.RecibeNotificaciones = '';
+                servicio.Telefono = dataSource.Telefono;
+            	servicio.TieneCarro = dataSource.TieneCarro;
+                //servicio.UserId = app.Users.currentUser.get('data').Id;
                 
                 servicios.one('sync', function () {
                     app.mobileApp.hideLoading();

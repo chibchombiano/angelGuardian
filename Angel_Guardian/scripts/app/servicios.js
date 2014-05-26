@@ -8,57 +8,80 @@ app.Servicios = (function () {
         
         var servicioModel = {
             id: 'Id',
-            fields: {                
-                CreatedAt: {
-                    field: 'CreatedAt',
-                    defaultValue: new Date()
-                },                
-                UserId: {
-                    field: 'UserId',
-                    defaultValue: null
+            fields: {        
+                Apellidos: {
+                    field: 'Apellidos',
+                    defaultValue: ''
                 },
+                 Aseguradora: {
+                    field: 'Aseguradora',
+                    defaultValue: ''
+                },
+                Cedula: {
+                    field: 'Cedula',
+                    defaultValue: ''
+                },
+                Ciudad: {
+                    field: 'Ciudad',
+                    defaultValue: ''
+                },               
                 Color: {
                     field: 'Color',
                     defaultValue: ''
                 },
-                Direccion_Llegada: {
-                    field: 'Direccion_Llegada',
+                Direccion: {
+                    field: 'Direccion',
                     defaultValue: ''
                 },
-                Direccion_Partida: {
-                    field: 'Direccion_Partida',
+                DireccionDestino: {
+                    field: 'DireccionDestino',
+                    defaultValue: ''
+                },
+                Email: {
+                    field: 'Email',
+                    defaultValue: ''
+                },
+                Estado: {
+                    field: 'Estado',
+                    defaultValue: ''
+                },
+                FechaServicio: {
+                    field: 'FechaServicio',
+                    defaultValue: new Date()
+                },
+                IdUsuario: {
+                    field: 'IdUsuario',
                     defaultValue: ''
                 },
                 Marca: {
                     field: 'Marca',
                     defaultValue: ''
+                },               
+                NoParadas: {
+                    field: 'NoParadas',
+                    defaultValue: ''
                 },
-                Numero_Paradas: {
-                    field: 'Numero_Paradas',
+                Nombre: {
+                    field: 'Nombre',
                     defaultValue: ''
                 },
                 Placa: {
                     field: 'Placa',
                     defaultValue: ''
                 },
-                Telefono_Confirmacion: {
-                    field: 'Telefono_Confirmacion',
+                RecibeNotificaciones: {
+                    field: 'RecibeNotificaciones',
+                    defaultValue: ''
+                },
+                Telefono: {
+                    field: 'Telefono',
+                    defaultValue: ''
+                },
+                TieneCarro: {
+                    field: 'TieneCarro',
                     defaultValue: ''
                 }
-            },
-            CreatedAtFormatted: function () {
-                return app.helper.formatDate(this.get('CreatedAt'));
-            },
-            User: function () {
-
-                var userId = this.get('UserId');
-
-                var user = $.grep(app.Users.users(), function (e) {
-                    return e.Id === userId;
-                })[0];
-
-                return user ? user.DisplayName : 'Anonymous';
-            }
+            }  
         };
         
         var serviciosDataSource = new kendo.data.DataSource({
@@ -67,10 +90,10 @@ app.Servicios = (function () {
                 model: servicioModel
             },
             transport: {
-                typeName: 'Solictud'
+                typeName: 'TM_Solicitud'
             },
             serverFiltering: true,
-            sort: { field: 'CreatedAt', dir: 'desc' }
+            sort: { field: 'Nombre', dir: 'desc' }
         });
         
         return {

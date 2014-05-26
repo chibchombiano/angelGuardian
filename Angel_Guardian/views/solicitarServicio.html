@@ -21,6 +21,15 @@
              <li>
             	Datos Vehiculo
                 <ul>
+                    
+                    <li>
+                        <input type="text" id="servicioCiudad" data-bind="value: Ciudad" placeholder="Ciudad" required/>
+                    </li>
+                    
+                    <li>
+                        <input type="text" id="servicioAseguradora" data-bind="value: Aseguradora" placeholder="Aseguradora" required/>
+                    </li>
+                    
                     <li>
                         <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required/>
                     </li>
@@ -38,18 +47,18 @@
             <li>
             Datos de servicio
                 <ul>
-                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion_Partida" placeholder="Direccion de partida" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
+                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion" placeholder="Direccion de partida" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
                 
                     <li>
-                        <input type="text" id="servicioDireccionLlegada" data-bind="value: Direccion_Llegada" placeholder="Direccion de llegada" required/>
+                        <input type="text" id="servicioDireccionLlegada" data-bind="value: DireccionDestino" placeholder="Direccion de llegada" required/>
                     </li>
                     
                     <li>
-                        <input type="number" id="servicioNumeroParadas" data-bind="value: Numero_Paradas" placeholder="# Paradas" min="1" max="20" required/>
+                        <input type="number" id="servicioNumeroParadas" data-bind="value: NoParadas" placeholder="# Paradas" min="1" max="20" required/>
                     </li>
                     
                     <li>
-                        <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono_Confirmacion" placeholder="Telefono confirmacion" required/>
+                        <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono" placeholder="Telefono confirmacion" required/>
                     </li>           
                 </ul>
             </li>            

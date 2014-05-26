@@ -6,9 +6,18 @@
         </div>
     </div>
     <form id="signUp">
-        <ul id="signup-form" data-role="listview" data-style="inset">
+        <ul id="signup-form" data-role="listview" data-style="inset">            
             <li>
-                <input type="text" id="signupName" data-bind="value: DisplayName" placeholder="Nombre completo" required/>
+                <input type="text" id="signupNombres" data-bind="value: Nombre" placeholder="Nombres" required/>
+            </li>
+            <li>
+                <input type="text" id="signupApellidos" data-bind="value: Apellidos" placeholder="Apellidos" required/>
+            </li>
+            <li>
+                <input type="text" id="signupCedula" data-bind="value: Cedula" placeholder="Cedula" required/>
+            </li>
+            <li>
+                <input type="text" id="signupTienes_Carro" data-bind="value: TieneCarro" placeholder="Tienes Carro?" required/>
             </li>
             <li>
                 <input type="text" id="signupMovil" data-bind="value: Password" placeholder="Numero celular" required/>
