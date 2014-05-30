@@ -15,6 +15,7 @@ app.AddServicio = (function () {
         var $buscarGps;  
         var datosUsuario;
        	var serviceUrl = 'http://angelguardian.azurewebsites.net/api/solicitud'
+        var $solicitarSalir;
         
         var init = function () {
             
@@ -22,8 +23,14 @@ app.AddServicio = (function () {
             $formFields = $signUpForm.find('input, textarea, select');
             $signupBtnWrp = $('#servicioSolicitar');
             $buscarGps = $('#buscarGps');            
+            $solicitarSalir = $('#solicitarSalir');
             
             validator = $signUpForm.kendoValidator({ validateOnBlur: false }).data('kendoValidator');
+            
+            $solicitarSalir.click(function(){
+                localStorage.clear();
+                app.mobileApp.navigate("#:back");
+            });
             
             $formFields.on('keyup keypress blur change input', function () {
                 if (validator.validate()) {
@@ -182,6 +189,8 @@ app.AddServicio = (function () {
                                 
         var solicitarServicio = function () {
             
+            	var ciudadSeleccionada = $("#solicitudCiudad option:selected").text();
+            
             	app.mobileApp.showLoading();
                 // Adding new comment to Comments model
                 var servicios = app.Servicios.servicios;
@@ -192,7 +201,7 @@ app.AddServicio = (function () {
             	servicio.Apellidos = dataSource.Apellidos;
             	servicio.Aseguradora = dataSource.Aseguradora;
             	servicio.Cedula = dataSource.Cedula;
-            	servicio.Ciudad = dataSource.Ciudad;
+            	servicio.Ciudad = ciudadSeleccionada;
                 servicio.Color = dataSource.Color;
             
                 servicio.Direccion =  dataSource.Direccion;

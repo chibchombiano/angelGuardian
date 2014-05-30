@@ -3,6 +3,9 @@
     zoom: 1;
 }
 
+.terminosCondiciones{
+    color: black;
+}
 .cf:before,
 .cf:after {
     display: table;

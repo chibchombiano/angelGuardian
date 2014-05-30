@@ -3,7 +3,7 @@
     <div data-role="header">
         <div data-role="navbar">
             Nuevo servicio
-            <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Cancelar</a>            
+            <a id="solicitarSalir" class="nav-button nav-button-cancel" data-align="left">Salir</a>            
         </div>
     </div>
     <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
@@ -23,12 +23,19 @@
                 <ul>
                     
                     <li>
-                        <input type="text" id="servicioCiudad" data-bind="value: Ciudad" placeholder="Ciudad" required/>
+                        <!--<input type="text" id="servicioCiudad" data-bind="value: Ciudad" placeholder="Ciudad" required/>-->
+                    <select id="solicitudCiudad" placeholder="Seleccione una ciudad">
+				        <option>Bogota</option>
+				        <option>Cali</option>
+                        <option>Cartagena</option>
+				        <option>Medellin</option>				        
+			        </select>
+
                     </li>
                     
-                    <li>
+                    <!--<li>
                         <input type="text" id="servicioAseguradora" data-bind="value: Aseguradora" placeholder="Aseguradora" required/>
-                    </li>
+                    </li>-->
                     
                     <li>
                         <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required/>
