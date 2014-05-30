@@ -76,7 +76,8 @@ app.AddServicio = (function () {
                 Placa: '',
                 Aseguradora: '',
                 Estado: 0,
-                RecibeNotificaciones: 0
+                RecibeNotificaciones: 0,
+                Hora : ''
             });
             kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
             
@@ -209,22 +210,22 @@ app.AddServicio = (function () {
             	servicio.TieneCarro = dataSource.TieneCarro;
                
                 
-                /*servicios.one('sync', function () {
+                servicios.one('sync', function () {
                     app.mobileApp.hideLoading();
                     app.mobileApp.navigate('views/servicioExitoso.html');
-                });*/
+                });
             
-            var data = {
-                Id: servicio.Id, Apellidos:  servicio.Apellidos, Aseguradora : servicio.Aseguradora, Cedula: servicio.Cedula,
-                Ciudad: servicio.Ciudad, Color: servicio.Color, Direccion: servicio.Direccion, DireccionDestino: servicio.DireccionDestino,
-                Email: servicio.Email, Estado: servicio.Estado, FechaServicio: servicio.FechaServicio, IdUsuario : servicio.IdUsuario,
-                Marca : servicio.Marca, NoParadas : servicio.NoParadas, Nombre : servicio.Nombre, Placa: servicio.Placa, RecibeNotificaciones : servicio.RecibeNotificaciones,
-                Telefono: servicio.Telefono, TieneCarro : servicio.TieneCarro
-            }
+            //var data = {
+                //Id: servicio.Id, Apellidos:  servicio.Apellidos, Aseguradora : servicio.Aseguradora, Cedula: servicio.Cedula,
+                //Ciudad: servicio.Ciudad, Color: servicio.Color, Direccion: servicio.Direccion, DireccionDestino: servicio.DireccionDestino,
+                //Email: servicio.Email, Estado: servicio.Estado, FechaServicio: servicio.FechaServicio, IdUsuario : servicio.IdUsuario,
+                //Marca : servicio.Marca, NoParadas : servicio.NoParadas, Nombre : servicio.Nombre, Placa: servicio.Placa, RecibeNotificaciones : servicio.RecibeNotificaciones,
+              //  Telefono: servicio.Telefono, TieneCarro : servicio.TieneCarro
+            //}
             
-            	sendRequest(data);
+            	//sendRequest(data);
                 
-                //servicios.sync();
+                servicios.sync();
         };
         
         return {

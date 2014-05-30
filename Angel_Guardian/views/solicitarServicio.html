@@ -47,10 +47,10 @@
             <li>
             Datos de servicio
                 <ul>
-                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion" placeholder="Direccion de partida" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
+                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion" placeholder="Destino inical" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
                 
                     <li>
-                        <input type="text" id="servicioDireccionLlegada" data-bind="value: DireccionDestino" placeholder="Direccion de llegada" required/>
+                        <input type="text" id="servicioDireccionLlegada" data-bind="value: DireccionDestino" placeholder="Destino final" required/>
                     </li>
                     
                     <li>
@@ -59,7 +59,12 @@
                     
                     <li>
                         <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono" placeholder="Telefono confirmacion" required/>
-                    </li>           
+                    </li>
+                    
+                    <li>
+                        <input type="time" id="servicioHoraServicio" data-bind="value: Hora" placeholder="Hora del servicio" required/>
+                    </li>
+                    
                 </ul>
             </li>            
         	</ul>        
