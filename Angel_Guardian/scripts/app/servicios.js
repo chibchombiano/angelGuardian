@@ -80,6 +80,10 @@ app.Servicios = (function () {
                 TieneCarro: {
                     field: 'TieneCarro',
                     defaultValue: ''
+                },
+                HoraServicio : {
+                    field: 'HoraServicio',
+                    defaultValue: ''
                 }
             }  
         };

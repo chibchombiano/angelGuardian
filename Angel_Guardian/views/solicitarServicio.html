@@ -25,10 +25,12 @@
                     <li>
                         <!--<input type="text" id="servicioCiudad" data-bind="value: Ciudad" placeholder="Ciudad" required/>-->
                     <select id="solicitudCiudad" placeholder="Seleccione una ciudad">
-				        <option>Bogota</option>
-				        <option>Cali</option>
-                        <option>Cartagena</option>
-				        <option>Medellin</option>				        
+				        <option>Bogotá</option>
+				        <option>Medellín</option>
+                        <option>Cali</option>
+				        <option>Bucaramanga</option>				        
+                        <option>Barranquilla</option>				        
+                        <option>Pereira</option>				        
 			        </select>
 
                     </li>
@@ -67,13 +69,19 @@
                     <li>
                         <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono" placeholder="Telefono confirmacion" required/>
                     </li>
-                    
-                    <li>
-                        <input type="time" id="servicioHoraServicio" data-bind="value: Hora" placeholder="Hora del servicio" required/>
-                    </li>
-                    
                 </ul>
-            </li>            
+            </li>           
+             <li>
+            Fecha y Hora del Servicio
+                <ul>
+                    <li>
+                        <input type="date" id="servicioFechaServicio"  data-align="right" data-bind="value: FechaServicio" placeholder="Fecha del servicio" required/>
+                    </li>
+                    <li>
+                        <input type="time" id="servicioHoraServicio"  placeholder="Hora del servicio" required/>
+                    </li>
+                </ul>
+            </li>           
         	</ul>        
     	</form>
     

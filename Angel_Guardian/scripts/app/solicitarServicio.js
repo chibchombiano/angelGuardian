@@ -48,6 +48,11 @@ app.AddServicio = (function () {
             app.mobileApp.showLoading();
             $buscarGps.click(getAddress);  
             
+            var d = new Date();
+            var n = d.getHours() + ":" + d.getMinutes();
+            
+            document.getElementById("servicioHoraServicio").value = n;
+            
             app.everlive.Users.currentUser().then(function(data){
                 	app.mobileApp.hideLoading();
                 	datosUsuario = data.result;
@@ -64,6 +69,9 @@ app.AddServicio = (function () {
         };
         
         function inicializarDataSource(){
+            var d = new Date();
+            var hours = d.getHours();
+			var minutes = d.getMinutes();
             dataSource = kendo.observable({
                 /*Id: datosUsuario.Id,*/
                 IdUsuario: datosUsuario.Id,
@@ -84,7 +92,8 @@ app.AddServicio = (function () {
                 Aseguradora: '',
                 Estado: 0,
                 RecibeNotificaciones: 0,
-                Hora : ''
+                HoraServicio :''
+                
             });
             kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
             
@@ -150,6 +159,7 @@ app.AddServicio = (function () {
                  else {
                     console.log("Geocoding failed: " + status);
                     deferred.reject("Geocoding failed: " + status);
+                    app.showConfirm("Tu ubicación no esta disponible, ingresala manualmente"); 
                     app.mobileApp.hideLoading();
                  }
               });
@@ -184,12 +194,55 @@ app.AddServicio = (function () {
             });
     	}
         
+        
+        function enviarEmail(data){
+            
+            var mensajeHtml = sprintf('<p> La persona %(data.Nombre)s, %(data.Apellidos)s a solicitado un servicio. </p> </br> Con los siguientes datos \
+									 Numero de telefono de contacto %(data.Telefono)s </br> \
+									 Ciudad %(data.Ciudad)s </br> \
+								     Cedula %(data.Cedula)s </br> \
+									 Direccion %(data.Direccion)s </br> \
+									 Direccion de destino %(data.DireccionDestino)s </br> \
+									 Email  %(data.Email)s </br> \
+									 Fecha  %(data.FechaServicio)s </br> \
+									 Tiene carro  %(data.TieneCarro)s </br> \
+									 Placa  %(data.Placa)s </br> \
+									 Marca  %(data.Marca)s </br> \
+									 Numero de paradas  %(data.NoParadas)s </br> \
+								     ' , {data: data}); 
+            
+            
+                var recipients = {
+                    "Recipients": ["hefesoft@hotmail.com"],
+                    "Context":{
+                        "CustomSubject": mensajeHtml
+                    }
+            	};
+
+            $.ajax({
+                type: "POST",
+                url: 'http://api.everlive.com/v1/Metadata/Applications/gIYVPOer1upHiLbY/EmailTemplates/1a920340-eb4e-11e3-8d3e-912262df1b53/send',
+                contentType: "application/json",
+                headers: { "Authorization" : "Masterkey {{Masterkey}}" },
+                data: JSON.stringify(recipients),
+                success: function(data){
+                    alert("Email successfully sent.");
+                },
+                error: function(error){
+                    alert(JSON.stringify(error));
+                }
+            })
+            
+        }
+        
          
       
                                 
         var solicitarServicio = function () {
             
             	var ciudadSeleccionada = $("#solicitudCiudad option:selected").text();
+            
+            	var horaServicio = $("#servicioHoraServicio").val();
             
             	app.mobileApp.showLoading();
                 // Adding new comment to Comments model
@@ -217,9 +270,11 @@ app.AddServicio = (function () {
             	servicio.RecibeNotificaciones = '';
                 servicio.Telefono = dataSource.Telefono;
             	servicio.TieneCarro = dataSource.TieneCarro;
+            	servicio.HoraServicio = horaServicio;
                
                 
                 servicios.one('sync', function () {
+                    //enviarEmail(servicio);
                     app.mobileApp.hideLoading();
                     app.mobileApp.navigate('views/servicioExitoso.html');
                 });
@@ -234,7 +289,7 @@ app.AddServicio = (function () {
             
             	//sendRequest(data);
                 
-                servicios.sync();
+             servicios.sync();
         };
         
         return {
