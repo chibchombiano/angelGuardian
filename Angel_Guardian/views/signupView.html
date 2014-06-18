@@ -6,6 +6,11 @@
         </div>
     </div>
     <form id="signUp">
+        <ul>
+	 		<li class="signup">
+         		<a data-role="button" href="views/terminosCondiciones.html">Terminos y condiciones</a>
+     		</li>
+    	</ul>
         <ul id="signup-form" data-role="listview" data-style="inset">            
             <li>
                 <input type="text" id="signupNombres" data-bind="value: Nombre" placeholder="Nombres" required/>
@@ -25,17 +30,16 @@
             <li>
                 <input type="email" id="signupEmail" data-bind="value: Email" placeholder="Correo electronico" required/>
             </li>
-            <li>
-                <input type="date" id="signupBirthDatePicker" data-bind="value: BirthDate" required/>
-            </li>
+                    
+                		Fecha de nacimiento
+            		
+                	<li>
+                		<input type="date" id="signupBirthDatePicker" data-bind="value: BirthDate" required/>
+            		</li>
         </ul>
     </form>
 
-    <ul>
-	 <li class="signup">
-         <a data-role="button" href="views/terminosCondiciones.html">Terminos y condiciones</a>
-     </li>
-    </ul>
+    
     
     
     <div id="signupBtnWrp" class="signup-btn-wrp disabled">
