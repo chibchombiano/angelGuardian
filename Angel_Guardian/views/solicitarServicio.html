@@ -1,11 +1,13 @@
-<div data-role="view" id="share" data-layout="default" class="signup-view" data-transition="overlay:down" class="add-activity-view"
+<div data-role="view" id="share" data-layout="default" class="signup-view" data-transition="overlay:down"
     data-init="app.AddServicio.init" data-show="app.AddServicio.show" data-model="app.AddServicio">
+    
     <div data-role="header">
         <div data-role="navbar">
             Nuevo servicio
             <a id="solicitarSalir" class="nav-button nav-button-cancel" data-align="left">Salir</a>            
         </div>
     </div>
+    
     <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
         <div class="user-avatar">
             <img data-bind="attr:{src: me.get('data').PictureUrl}" alt="styles/images/avatar.png" />
@@ -23,7 +25,7 @@
                 <ul>
                     
                     <li>
-                        <!--<input type="text" id="servicioCiudad" data-bind="value: Ciudad" placeholder="Ciudad" required/>-->
+                        
                     <select id="solicitudCiudad" placeholder="Seleccione una ciudad">
 				        <option>Bogotá</option>
 				        <option>Medellín</option>
@@ -33,22 +35,18 @@
                         <option>Pereira</option>				        
 			        </select>
 
-                    </li>
-                    
-                    <!--<li>
-                        <input type="text" id="servicioAseguradora" data-bind="value: Aseguradora" placeholder="Aseguradora" required/>
-                    </li>-->
-                    
+                    </li>                    
+                                       
                     <li>
-                        <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required/>
+                        <input type="text" id="servicioMarca" data-bind="value: Marca" placeholder="Marca" required validationMessage="El campo es requerido"/>
                     </li>
                     
                     <li>
-                        <input type="text" id="servicioColor" data-bind="value: Color" placeholder="Color" required/>
+                        <input type="text" id="servicioColor" data-bind="value: Color" placeholder="Color" required validationMessage="El campo es requerido"/>
                     </li>
                     
                     <li>
-                        <input type="text" id="servicioPlaca" data-bind="value: Placa" placeholder="Placa" required/>
+                        <input type="text" id="servicioPlaca" data-bind="value: Placa" placeholder="Placa" required validationMessage="El campo es requerido"/>
                     </li>
                 </ul>
         	</li>  
@@ -59,15 +57,15 @@
                     <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion" placeholder="Destino inical" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
                 
                     <li>
-                        <input type="text" id="servicioDireccionLlegada" data-bind="value: DireccionDestino" placeholder="Destino final" required/>
+                        <input type="text" id="servicioDireccionLlegada" data-bind="value: DireccionDestino" placeholder="Destino final" required validationMessage="El campo es requerido"/>
                     </li>
                     
                     <li>
-                        <input type="number" id="servicioNumeroParadas" data-bind="value: NoParadas" placeholder="# Paradas" min="1" max="20" required/>
+                        <input type="number" id="servicioNumeroParadas" data-bind="value: NoParadas" placeholder="# Paradas" min="1" max="20" required validationMessage="El campo es requerido"/>
                     </li>
                     
                     <li>
-                        <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono" placeholder="Telefono confirmacion" required/>
+                        <input type="text" id="servicioTelefonoConfirmacion" data-bind="value: Telefono" placeholder="Telefono confirmacion" required validationMessage="El campo es requerido"/>
                     </li>
                 </ul>
             </li>           
@@ -75,10 +73,10 @@
             Fecha y Hora del Servicio
                 <ul>
                     <li>
-                        <input type="date" id="servicioFechaServicio"  data-align="right" data-bind="value: FechaServicio" placeholder="Fecha del servicio" required/>
+                        <input type="date" id="servicioFechaServicio"  data-align="right" data-bind="value: FechaServicio" placeholder="Fecha del servicio" required validationMessage="El campo es requerido"/>
                     </li>
                     <li>
-                        <input type="time" id="servicioHoraServicio"  placeholder="Hora del servicio" required/>
+                        <input type="time" id="servicioHoraServicio"  placeholder="Hora del servicio" required validationMessage="El campo es requerido"/>
                     </li>
                 </ul>
             </li>           

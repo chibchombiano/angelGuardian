@@ -1,10 +1,13 @@
 <div data-role="view" id="servicioExitoso" data-layout="default" data-transition="overlay:down" class="add-comment-view"
-    data-model="app.AddComment">
+    data-init="app.ServicioExitoso.init" data-show="app.ServicioExitoso.show" data-model="app.AddComment">
+    
     <div data-role="header">
         <div data-role="navbar">
-            Solicitud procesada            
+            Solicitud procesada
+            <a id="volverSolicitudServicioExitoso" class="nav-button nav-button-cancel" data-align="left">Salir</a>            
         </div>
     </div>
+    
     <div class="share-form-wrp" data-role="listview" data-style="inset">
         <div class="user-avatar">
             <img data-bind="attr:{src: me.get('data').PictureUrl}" alt="styles/images/avatar.png" />
