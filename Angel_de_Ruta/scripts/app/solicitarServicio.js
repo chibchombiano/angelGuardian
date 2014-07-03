@@ -128,10 +128,9 @@ app.AddServicio = (function () {
                     deferred.resolve(position);
                 },
                 function(error){
-            		deferred.reject("Geocoding failed: " + status);
-                    alert("Geocoding failed: " + status);
+            		app.showConfirm("No tiene los servicios de ubicación activados, actívelos, o digite su ubicación actual."); 
                     app.mobileApp.hideLoading();
-                }
+                },{ timeout: 10000, enableHighAccuracy: false }
                 );
             
             return deferred.promise;
@@ -156,19 +155,14 @@ app.AddServicio = (function () {
                          deferred.resolve(direccion);
                      }
                      catch (error){                         
-                         // alert("Google in geo" + error);
+                         app.showConfirm("No tiene los servicios de ubicación activados, actívelos, o digite su ubicación actual."); 
+                         app.mobileApp.hideLoading();
                      }
                  }
-                 else {
-                     
-                     alert("Else" + status);
-                     
-                    console.log("Geocoding failed: " + status);
+                 else {                                      
                     deferred.reject("Geocoding failed: " + status);
-                    app.showConfirm("Tu ubicación no esta disponible, ingresala manualmente"); 
+                    app.showConfirm("No tiene los servicios de ubicación activados, actívelos, o digite su ubicación actual."); 
                     app.mobileApp.hideLoading();
-                     
-                     
                  }
               });
            }
