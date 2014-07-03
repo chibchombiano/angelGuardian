@@ -52,6 +52,8 @@ app.AddServicio = (function () {
             
             document.getElementById("servicioHoraServicio").value = n;
             $buscarGps.click(function(){               
+                // var result = app.checkConnection();
+                // alert(result.toString());
                 getAddress();
             });
             
@@ -130,7 +132,7 @@ app.AddServicio = (function () {
                 function(error){
             		app.showConfirm("No tiene los servicios de ubicación activados, actívelos, o digite su ubicación actual."); 
                     app.mobileApp.hideLoading();
-                },{ timeout: 10000, enableHighAccuracy: false }
+                },{ timeout: 10000, enableHighAccuracy: false, maximumAge: 1000 }
                 );
             
             return deferred.promise;

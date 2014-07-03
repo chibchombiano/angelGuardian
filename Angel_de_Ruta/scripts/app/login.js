@@ -26,8 +26,6 @@ app.Login = (function () {
 
         var show = function () {
             
-            
-            
             $loginUsername.val('');
             $loginPassword.val('');
             

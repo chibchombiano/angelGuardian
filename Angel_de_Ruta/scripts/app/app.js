@@ -1,15 +1,30 @@
 var app = (function (win) {
     'use strict';
 
+    
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+    
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';   
+        
+        return states[networkState];
+    }
+
+    
     // Global error handling
     var showAlert = function(message, title, callback) {
-
         navigator.notification.alert(message, callback || function () {
         }, title, 'OK');
     };
 
     var showError = function(message) {
-
         showAlert(message, 'Error occured');
     };
 
@@ -180,7 +195,8 @@ var app = (function (win) {
         mobileApp: mobileApp,
         helper: AppHelper,
         everlive: el,
-        getYear: getYear       
+        getYear: getYear,
+        checkConnection : checkConnection
     };
 
 }(window));
