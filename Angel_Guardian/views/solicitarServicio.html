@@ -54,7 +54,7 @@
             <li>
             Datos de servicio
                 <ul>
-                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion" placeholder="Destino inical" required/><a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet" data-style="contactadd"></a></li>                            
+                    <li><input type="text" id="servicioDireccionPartida" data-bind="value: Direccion" placeholder="Destino inical" required/><a id="buscarGps" data-role="detailbutton" data-rel="actionsheet" data-style="contactadd"></a></li>                            
                 
                     <li>
                         <input type="text" id="servicioDireccionLlegada" data-bind="value: DireccionDestino" placeholder="Destino final" required validationMessage="El campo es requerido"/>
@@ -94,7 +94,7 @@
     
 <div data-role="view">  
   <ul id="actionsheet" data-role="actionsheet" data-cancel="Cerrar">
-    <li><a id='buscarGps'>Buscar por gps</a></li> 
+    <li><a id='buscarGps1'>Buscar por gps</a></li> 
   </ul>
 </div>
     

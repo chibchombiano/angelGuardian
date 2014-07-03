@@ -18,11 +18,12 @@ app.AddServicio = (function () {
         var $solicitarSalir;
         
         var init = function () {
-            
+         
             $signUpForm = $('#servicio');
             $formFields = $signUpForm.find('input, textarea, select');
             $signupBtnWrp = $('#servicioSolicitar');
-            $buscarGps = $('#buscarGps');            
+            $buscarGps = $('#buscarGps');
+            
             $solicitarSalir = $('#solicitarSalir');
             
             validator = $signUpForm.kendoValidator({ validateOnBlur: true }).data('kendoValidator');
@@ -46,12 +47,13 @@ app.AddServicio = (function () {
         var show = function () {
             
             app.mobileApp.showLoading();
-            $buscarGps.click(getAddress);  
-            
             var d = new Date();
             var n = d.getHours() + ":" + d.getMinutes();
             
             document.getElementById("servicioHoraServicio").value = n;
+            $buscarGps.click(function(){               
+                getAddress();
+            });
             
             app.everlive.Users.currentUser().then(function(data){
                 	app.mobileApp.hideLoading();
@@ -105,17 +107,19 @@ app.AddServicio = (function () {
             inicializarDataSource();
         };
         
-        var getAddress = function(){
-             app.mobileApp.showLoading();
+        function getAddress(){
+            
+            app.mobileApp.showLoading();
         
             getPosition().done(function(){            
                 geoDecode().done(function(){
             		 app.mobileApp.hideLoading();    
             	});                
             });
-        }
+        };
         
         var getPosition = function(){
+            
             var deferred = Q.defer();
             
             navigator.geolocation.getCurrentPosition(
@@ -125,6 +129,7 @@ app.AddServicio = (function () {
                 },
                 function(error){
             		deferred.reject("Geocoding failed: " + status);
+                    alert("Geocoding failed: " + status);
                     app.mobileApp.hideLoading();
                 }
                 );
@@ -150,13 +155,20 @@ app.AddServicio = (function () {
                          kendo.bind($('#servicio'), dataSource, kendo.mobile.ui);
                          deferred.resolve(direccion);
                      }
-                     catch (error){}
+                     catch (error){                         
+                         // alert("Google in geo" + error);
+                     }
                  }
                  else {
+                     
+                     alert("Else" + status);
+                     
                     console.log("Geocoding failed: " + status);
                     deferred.reject("Geocoding failed: " + status);
                     app.showConfirm("Tu ubicación no esta disponible, ingresala manualmente"); 
                     app.mobileApp.hideLoading();
+                     
+                     
                  }
               });
            }
@@ -229,8 +241,8 @@ app.AddServicio = (function () {
                 app.mobileApp.hideLoading();
                 app.mobileApp.navigate('views/servicioExitoso.html');
             }
-        };
-        
+        };        
+     
         function enviarEmail(data){
             
             var mensajeHtml = sprintf('<p> La persona %(data.Nombre)s, %(data.Apellidos)s a solicitado un servicio. </p> </br> Con los siguientes datos \
