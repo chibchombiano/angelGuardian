@@ -6,43 +6,59 @@
         </div>
     </div>
     <form id="signUp">
-        <ul>
-	 		<li class="signup">
-         		<a data-role="button" href="views/terminosCondiciones.html">Terminos y condiciones</a>
-     		</li>
-    	</ul>
-        <ul id="signup-form" data-role="listview" data-style="inset">            
-            <li>
-                <input type="text" id="signupNombres" data-bind="value: Nombre" placeholder="Nombres" required/>
+        <div class="listTerm">   
+           <div class="titleItem" >
+            	<span>Terminos y Condiciones</span>                               
+            </div>            
+            <ul data-role="listview" data-style="inset">
+                <li class="signup">
+                    <a data-role="button" href="views/terminosCondiciones.html">Revisar</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="listTerm">   
+            <div class="titleItem" >
+            	<span>Datos Básicos</span>
+            </div>
+      	  <ul id="signup-form" data-role="listview" data-style="inset">            
+            <li class="username">
+                <input type="text" id="signupNombres" data-bind="value: Nombre" placeholder="Nombres"  required/>
             </li>
-            <li>
+            <li class="lastName">
                 <input type="text" id="signupApellidos" data-bind="value: Apellidos" placeholder="Apellidos" required/>
             </li>
-            <li>
+            <li class="id">
                 <input type="text" id="signupCedula" data-bind="value: Cedula" placeholder="Cedula" required/>
             </li>
             <!--<li>
                 <input type="text" id="signupTienes_Carro" data-bind="value: TieneCarro" placeholder="Tienes Carro?" required/>
             </li>-->
-            <li>
+            <li class="phone">
                 <input type="text" id="signupMovil" data-bind="value: Password" placeholder="Numero celular" required/>
             </li>
-            <li>
+            <li class="email">
                 <input type="email" id="signupEmail" data-bind="value: Email" placeholder="Correo electronico" required/>
             </li>
-                    
-                		Fecha de nacimiento
-            		
-                	<li>
+            </ul>
+            <div class="titleItem" >
+       			<span>Fecha de Nacimiento</span>
+            </div>
+            <ul data-role="listview" data-style="inset">              
+                	<li class="birthday">
                 		<input type="date" id="signupBirthDatePicker" data-bind="value: BirthDate" required/>
             		</li>
-        </ul>
-    </form>
-
+       		</ul>
+       
+    	<div class="clear">        
+        </div>
     
+            <div id="signupBtnWrp" class="signup-btn-wrp disabled">
+                <a class="btn btn-signup" data-role="button" data-bind="click: signup">Registrese</a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        </form> 
     
-    
-    <div id="signupBtnWrp" class="signup-btn-wrp disabled">
-        <a class="btn btn-signup" data-role="button" data-bind="click: signup">Registrese</a>
-    </div>
 </div>

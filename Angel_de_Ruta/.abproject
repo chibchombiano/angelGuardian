@@ -1,8 +1,8 @@
 {
   "ProjectGuid": "38711688-e9b1-40b5-8517-2f2fc62646ed",
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "AppIdentifier": "com.telerik.AngelGuardian",
-  "ProjectName": "Angel_Guardian",
+  "AppIdentifier": "com.telerik.AngelRuta",
+  "ProjectName": "Angel_de_Ruta",
   "IsRunnable": "true",
   "FrameworkVersion": "3.2.0",
   "AndroidPermissions": [
@@ -34,8 +34,7 @@
     "com.telerik.Cordova-MobileTestingExtension"
   ],
   "DeviceOrientations": [
-    "Portrait",
-    "Landscape"
+    "Portrait"
   ],
   "iOSStatusBarStyle": "Default",
   "AndroidHardwareAcceleration": "false",
@@ -45,13 +44,13 @@
     "ID_RESOLUTION_HD720P"
   ],
   "BundleVersion": "1.0",
-  "Description": "Angel Guardian",
+  "Description": "Angel de Ruta",
   "Author": "Hefesoft",
-  "DisplayName": "Angel Guardian",
+  "DisplayName": "Angel de Ruta",
   "iOSBackgroundMode": [
     "location"
   ],
-  "WP8TileTitle": "Angel Guardian",
+  "WP8TileTitle": "Angel de Ruta",
   "WP8ProductID": "{38711688-e9b1-40b5-8517-2f2fc62646ed}",
   "WP8PublisherID": "{8c1efc1a-0014-4a06-b951-c79752e92813}",
   "WP8Publisher": "Hefesoft",

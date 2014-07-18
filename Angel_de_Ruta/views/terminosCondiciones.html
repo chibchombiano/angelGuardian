@@ -1,58 +1,62 @@
-<div data-role="view" id="servicioExitoso" data-layout="default" data-transition="overlay:down" class="add-activity-view"
-    >
+<div data-role="view" id="servicioExitoso" data-layout="default" data-transition="overlay:down" class="add-activity-view">
     
-    <div data-role="header">
+    <div data-role="header" class="headerNavbar">
          <div data-role="header">
         <div data-role="navbar">
-            Terminos y condiciones
-            <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Volver</a>
+            Terminos y Condiciones
+            <a class="nav-button nav-button-cancel nav-button-back hide-text" data-align="left" data-role="backbutton">
+				Back
+            </a>
         </div>
     </div>
-    </div>
-    
-    <form >
-            
-        <ol data-role="listview" data-style="inset">        
-            <li>
-            	<span class="terminosCondiciones">SUJETO A DISPONIBILIDAD OPERATIVA.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">TIEMPO DE ESPERA DEL CONDUCTOR, 15 MINUTOS.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">LA SOLICITUD DEL SERVICIO SE DEBE EFECTUAR, CON MINIMO TRES HORAS DE ANTICIPACION.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">EL SEGUROS OBLIGATORIO DEBE ESTAR VIGENTE.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">LA REVISION TECNICO MECANICA SEGÚN LA LEY, DEBE ESTAR VIGENTE.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">EL CONDUCTOR AL INICIO DEL SERVICIO REALIZARA UNA VERIFICACION DE LA DOCUMENTACION.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">LOS OBJETOS DE VALOR DEBEN SER REPORTADOS E IDENTIFICADOS AL CONDUCTOR.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">NO HAY TIEMPOS DE ESPERA INTERMEDIOS DURANTE EL RECORRIDO.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">NO SE ADMITE SOBRECUPO DE PASAJEROS.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">EL USUARIO DEBE FIRMAR EL PAZ Y SALVO QUE LE ENTRAGA EL CONDUCTOR.</span>
-            </li>            
-            <li>
-                <span class="terminosCondiciones">LA CANCLACION DE SOLICITUD DE SERVICIO SE PUEDE HACER MINIMO CON UNA HORA DE ANTICIPACIÓN.</span>
-            </li>    
-            
-            <li>
-                <span id="login" data-role="touch">
-                    <a data-role="button" class="btn btn-login"  href="views/signupView.html">Aceptar</a>
-                </span>
-            </li>
-            
-        </ol> 
+    </div>    
+    <form>            
+        <div class="listTerm">            
+            <ul data-role="listview" data-style="inset" class="list">        
+                <li>
+                    Sujeto a disponibilidad operativa.
+                </li>            
+                <li>
+                    Tiempo de espera del conductor: 15 minutos.
+                </li>            
+                <li>
+                    La solicitud del servicio se debe efectuar, con mínimo tres horas de anticipación
+                </li>            
+                <li>
+                    El seguro obligatorio debe estar vigente
+                </li>            
+                <li>
+                    La revisión técnico mecánica según la ley, debe estar vigente
+                </li>            
+                <li>
+                    El conductor al inicio del servicio realizara una verificación de la documentación
+                </li>            
+                <li>
+                    Los objetos de valor deben ser reportados e identificados al conductor
+                </li>            
+                <li>
+                    No se admite sobrecupo de pasajeros
+                </li>            
+                <li>
+                   No hay tiempos de espera intermedios durante el recorrido
+                </li>            
+                <li>
+                    El usuario debe firmar el paz y salvo que le entrega el conductor
+                </li>            
+                <li>
+                    La cancelación de solicitud de servicio se puede hacer mínimo con una hora de anticipación
+                </li>
+            </ul>
+            <div class="clear">
+                
+            </div>
+               
+            <span id="login" data-role="touch">
+                <a data-role="button" class="btn btn-login" href="views/signupView.html">Aceptar</a>
+            </span>                     
+               
+            <div class="clear">                
+            </div>
+        </div>
     </form>
 </div>
