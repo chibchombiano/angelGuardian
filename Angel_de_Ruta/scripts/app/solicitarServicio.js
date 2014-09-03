@@ -42,6 +42,8 @@ app.AddServicio = (function () {
                     }
                 }
             });
+            
+            $("#servicioSolicitarBtnAdicionar").click(solicitarServicio);
         };
         
         var show = function () {
